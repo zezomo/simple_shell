@@ -11,9 +11,9 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-/*Envariable command*/
+/*Envariable command function*/
 char *_getenv(char *nptr);
-void _env(void);
+void P_env(void);
 extern char **environ;
 
 #endif
