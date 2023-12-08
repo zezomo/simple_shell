@@ -13,7 +13,7 @@
 #include <fcntl.h>
 
 /*Envariable command function*/
-char *_getenv(char *nptr);
+char *get_v(char *namev);
 void P_env(void);
 extern char **environ;
 
