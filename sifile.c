@@ -7,8 +7,7 @@
  *
  * Return: void
  */
-void _sigin(int signf)
+void _sigin(__attribute__((unused))int signf)
 {
-	(void) signf;
 	exit(0);
 }

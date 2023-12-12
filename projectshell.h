@@ -18,5 +18,4 @@ void P_env(void);
 extern char **environ;
 /*gitline function*/
 void _sigin(int signf);
-
 #endif
