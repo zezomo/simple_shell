@@ -18,10 +18,7 @@
 #define BUFFER_SIZE 1024
 
 extern char **environ;
-<<<<<<< HEAD
-/*gitline function*/
-void _sigin(int signf);
-size_t my_strlen(const char *str);
+<<<<<<< HEAE
 =======
 
 void execute_command(char *command, char **arguments, char **envp);
