@@ -1,53 +1,44 @@
 #include "projectshell.h"
 
-#define MAX_COMMAND_LENGTH 100
 /**
  * main - this is a function believe me
- *
- * Return: nothing just print
- */
+ * @argc: did you really will read this
+ * @argv: did you really will read this
+ * Return: return pointer of string
+*/
 
-int main(void)
+int main(int argc, char **argv)
 {
 	char *input = NULL;
 	size_t len = 0;
 	ssize_t read;
-	pid_t pid;
-	char prompt[] = "#cisfun$ ";
+	(void)argv;
 
-	while (1)
+	if (argc == 1 && isatty(STDIN_FILENO))
 	{
-		write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
-
-		read = getline(&input, &len, stdin);
-
-		if (read == -1)
+		while (1)
 		{
-			write(STDOUT_FILENO, "\n", 1);
-			break;
+			display_prompt();
+			read = custom_getline(&input, &len, stdin);
+			if (read == -1)
+			{
+				write(STDOUT_FILENO, "\n", 1);
+				break;
+			}
+			input[strcspn(input, "\n")] = 0;
+			process_input(input);
 		}
-
-		input[strcspn(input, "\n")] = 0;
-
-		pid = fork();
-
-		if (pid == -1)
+	}
+	else
+	{
+		while ((read = getline(&input, &len, stdin)) != -1)
 		{
-			perror("fork");
-		}
-		else if (pid == 0)
-		{
-			execlp(input, input, NULL);
-			perror("execlp");
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			waitpid(pid, NULL, 0);
+			input[strcspn(input, "\n")] = 0;
+			process_input(input);
 		}
 	}
 	free(input);
-
 	return (0);
 }
+
 
