@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <stddef.h>
 #include <stdbool.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
@@ -18,4 +19,5 @@ void P_env(void);
 extern char **environ;
 /*gitline function*/
 void _sigin(int signf);
+size_t my_strlen(const char *str);
 #endif

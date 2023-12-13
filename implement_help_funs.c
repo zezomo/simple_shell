@@ -5,16 +5,15 @@
  * @s: char parameter
  * Return: value of coun
 */
+#include <stddef.h>
 
-int _strlen(char *s)
-{
-	int coun;
-
-	for (coun = 0; *s != '\0'; s++)
-		coun++;
-	return (coun);
+size_t my_strlen(const char *str) {
+    const char *s = str;
+    while (*s) {
+        ++s;
+    }
+    return s - str;
 }
-
 
 /**
  * *_strcpy -  copies the string pointed to by src

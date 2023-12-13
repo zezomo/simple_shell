@@ -12,7 +12,7 @@ int len_of_variable;
 
 if (namev == NULL || namev[0] == '\0')
 return (NULL);
-len_of_variable = (int)strlen(namev);
+len_of_variable = (int)my_strlen(namev);
 
 for (v = environ; *v != NULL; v++)
 {
