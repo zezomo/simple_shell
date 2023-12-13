@@ -37,6 +37,11 @@ void handle_exit_command(char **tokens)
 		if (tokens[1] != NULL)
 		{
 			exit_status = atoi(tokens[1]);
+			if (exit_status == 0 && strcmp(tokens[1], "0") != 0)
+			{
+				fprintf(stderr, "exit: %s: numeric argument required\n", tokens[1]);
+				exit(2);
+			}
 			exit(exit_status);
 		}
 		else
