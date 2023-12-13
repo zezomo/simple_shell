@@ -98,9 +98,12 @@ void process_input(char *input)
 		{
 			handle_env_command(tokens);
 		}
-		else
+		else if (strcmp(tokens[0], "exit") == 0)
 		{
 			handle_exit_command(tokens);
+		}
+		else
+		{
 			handle_any_command(tokens);
 		}
 	}
